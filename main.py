@@ -3,7 +3,7 @@ import time
 import schedule
 import boto3
 
-
+#TODO FINISH STARTUP & SHUTDOWN
 def aws_instance_shutdown():
     pass
 
