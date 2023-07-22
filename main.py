@@ -3,13 +3,19 @@ import time
 import schedule
 import boto3
 
-#TODO FINISH STARTUP & SHUTDOWN
+region = 'INSERT_REGION'
+instances = ['INSERT_INSTANCES']
+ec2 = boto3.client('ec2', region_name=region)
+
+
 def aws_instance_shutdown():
-    pass
+    ec2.stop_instances(InstanceIds=instances)
+    print('stopped your instances: ' + str(instances))
 
 
 def aws_instance_startup():
-    pass
+    ec2.start_instances(InstanceIds=instances)
+    print('started your instances: ' + str(instances))
 
 
 def job_scheduling():
@@ -33,9 +39,7 @@ def job_scheduling():
         time.sleep(1)
 
 
-def main():
+def lambda_handler(event, context):
     job_scheduling()
 
 
-if __name__ == '__main__':
-    main()
